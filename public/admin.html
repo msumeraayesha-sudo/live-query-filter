@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>BrewBasket • Admin Dashboard</title>
+
+    <link rel="stylesheet" href="admin.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <header class="navbar">
+
+        <div class="brand">
+            <h1>☕ BrewBasket</h1>
+
+            <p>
+                Admin Order Dashboard
+            </p>
+        </div>
+
+        <div class="nav-links">
+
+            <a href="/">
+                🏠 Shop
+            </a>
+
+            <a href="/orders.html">
+                📦 My Orders
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- MAIN -->
+
+    <main class="container">
+
+        <!-- HEADER -->
+
+        <section class="dashboard-heading">
+
+            <div>
+
+                <span>
+                    👋 Welcome, Admin
+                </span>
+
+                <h2>
+                    Order Dashboard
+                </h2>
+
+                <p>
+                    Manage BrewBasket orders and update
+                    their delivery status.
+                </p>
+
+            </div>
+
+            <button
+                id="refreshBtn"
+                class="refresh-btn"
+            >
+                🔄 Refresh Orders
+            </button>
+
+        </section>
+
+
+        <!-- STATISTICS -->
+
+        <section class="stats-grid">
+
+            <div class="stat-card">
+
+                <div class="stat-icon orange">
+                    📦
+                </div>
+
+                <div>
+                    <span>
+                        Total Orders
+                    </span>
+
+                    <strong id="totalOrders">
+                        0
+                    </strong>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon green">
+                    🟢
+                </div>
+
+                <div>
+                    <span>
+                        New Orders
+                    </span>
+
+                    <strong id="newOrders">
+                        0
+                    </strong>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon purple">
+                    🚚
+                </div>
+
+                <div>
+                    <span>
+                        Out for Delivery
+                    </span>
+
+                    <strong id="deliveryOrders">
+                        0
+                    </strong>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon blue">
+                    💰
+                </div>
+
+                <div>
+                    <span>
+                        Total Revenue
+                    </span>
+
+                    <strong id="totalRevenue">
+                        ₹0
+                    </strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ORDERS -->
+
+        <section class="orders-section">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <h2>
+                        📋 Customer Orders
+                    </h2>
+
+                    <p>
+                        Update order status from the menu.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- LOADING -->
+
+            <div
+                id="loading"
+                class="loading"
+            >
+
+                <div class="spinner"></div>
+
+                <p>
+                    Loading orders...
+                </p>
+
+            </div>
+
+
+            <!-- ORDERS TABLE -->
+
+            <div
+                id="ordersTableWrapper"
+                class="table-wrapper hidden"
+            >
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Order
+                            </th>
+
+                            <th>
+                                Customer
+                            </th>
+
+                            <th>
+                                Items
+                            </th>
+
+                            <th>
+                                Total
+                            </th>
+
+                            <th>
+                                Payment
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                            <th>
+                                Action
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody
+                        id="ordersTable"
+                    ></tbody>
+
+                </table>
+
+            </div>
+
+
+            <!-- EMPTY -->
+
+            <div
+                id="emptyState"
+                class="empty-state hidden"
+            >
+
+                <div>
+                    📭
+                </div>
+
+                <h2>
+                    No Orders Yet
+                </h2>
+
+                <p>
+                    Customer orders will appear here.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- STATUS MESSAGE -->
+
+    <div
+        id="toast"
+        class="toast"
+    >
+    </div>
+
+
+    <footer>
+
+        <p>
+            ☕ BrewBasket Admin Dashboard
+        </p>
+
+        <p>
+            Manage orders • Update delivery status • Track sales
+        </p>
+
+    </footer>
+
+
+    <script src="admin.js"></script>
+
+</body>
+
+</html>

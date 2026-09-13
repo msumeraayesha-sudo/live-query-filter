@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>My Orders • BrewBasket</title>
+
+    <link rel="stylesheet" href="orders.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <header class="navbar">
+
+        <div class="brand">
+            <h1>☕ BrewBasket</h1>
+
+            <p>
+                Sip it. Love it. Add it to your basket.
+            </p>
+        </div>
+
+        <div class="nav-links">
+
+    <a href="/" class="home-btn">
+        🏠 Shop
+    </a>
+
+    <a
+        href="/admin.html"
+        class="admin-link"
+    >
+        ⚙️ Admin
+    </a>
+
+</div>
+
+    </header>
+
+
+    <!-- MAIN -->
+
+    <main class="container">
+
+        <section class="page-heading">
+
+            <span class="heading-icon">
+                📦
+            </span>
+
+            <div>
+                <h2>My Orders</h2>
+
+                <p>
+                    Track your BrewBasket orders and
+                    view your order details.
+                </p>
+            </div>
+
+        </section>
+
+
+        <!-- LOADING -->
+
+        <div
+            id="loading"
+            class="loading"
+        >
+            <div class="spinner"></div>
+
+            <p>
+                Loading your orders...
+            </p>
+        </div>
+
+
+        <!-- ORDERS -->
+
+        <section
+            id="ordersContainer"
+            class="orders-container"
+        ></section>
+
+
+        <!-- EMPTY -->
+
+        <section
+            id="emptyOrders"
+            class="empty-orders hidden"
+        >
+
+            <div class="empty-icon">
+                🛒
+            </div>
+
+            <h2>
+                No Orders Yet
+            </h2>
+
+            <p>
+                Your delicious BrewBasket journey
+                starts here!
+            </p>
+
+            <a href="/" class="shop-btn">
+                ☕ Start Shopping
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <!-- ORDER DETAILS MODAL -->
+
+    <div
+        id="detailsModal"
+        class="modal hidden"
+    >
+
+        <div class="details-modal">
+
+            <div class="modal-header">
+
+                <div>
+                    <h2>
+                        📋 Order Details
+                    </h2>
+
+                    <p id="modalOrderId">
+                        Order ID
+                    </p>
+                </div>
+
+                <button
+                    id="closeModal"
+                    class="close-btn"
+                >
+                    ✕
+                </button>
+
+            </div>
+
+
+            <div
+                id="orderDetails"
+                class="order-details"
+            ></div>
+
+        </div>
+
+    </div>
+
+
+    <footer>
+
+        <p>
+            Built with ❤️ using HTML, CSS, JavaScript & Express
+        </p>
+
+        <p>
+            ☕ BrewBasket • Freshly brewed happiness
+        </p>
+
+    </footer>
+
+
+    <script src="orders.js"></script>
+
+</body>
+
+</html>

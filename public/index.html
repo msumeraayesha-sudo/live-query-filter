@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>BrewBasket ☕</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =================================
+         NAVBAR
+    ================================== -->
+
+    <header class="navbar">
+
+        <div class="brand">
+            <h1>☕ BrewBasket</h1>
+
+            <p>
+                Sip it. Love it. Add it to your basket.
+            </p>
+        </div>
+
+        <div class="nav-actions">
+
+    <a
+        href="/orders.html"
+        class="orders-btn"
+    >
+        📦 My Orders
+    </a>
+
+    <a
+        href="/admin.html"
+        class="admin-btn"
+    >
+        ⚙️ Admin
+    </a>
+
+    <button
+        id="cartBtn"
+        class="cart-btn"
+    >
+        🛒 Cart
+        <span id="cartCount">0</span>
+    </button>
+
+    <button
+        id="themeBtn"
+        class="theme-btn"
+    >
+        🌙
+    </button>
+
+</div>
+
+    </header>
+
+
+    <!-- =================================
+         MAIN
+    ================================== -->
+
+    <main class="container">
+
+        <!-- SEARCH -->
+
+        <section class="search-section">
+
+            <div class="search-box">
+
+                <span>🔍</span>
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search coffee, tea, desserts..."
+                    autocomplete="off"
+                >
+
+                <button id="clearBtn">
+                    Clear
+                </button>
+
+            </div>
+
+            <p class="search-hint">
+                Search instantly and discover your favorites ✨
+            </p>
+
+        </section>
+
+
+        <!-- FILTER -->
+
+        <section class="filter-panel">
+
+            <div class="filter-header">
+
+                <div>
+                    <h2>🏷️ Categories</h2>
+
+                    <p>
+                        Choose one or more categories
+                    </p>
+                </div>
+
+                <button
+                    id="resetBtn"
+                    class="reset-btn"
+                >
+                    Reset Filters
+                </button>
+
+            </div>
+
+            <div
+                id="categoryContainer"
+                class="categories"
+            ></div>
+
+        </section>
+
+
+        <!-- RESULTS HEADER -->
+
+        <section class="results-header">
+
+            <div>
+
+                <h2>Discover Deliciousness 🍰</h2>
+
+                <p id="resultCount">
+                    Loading results...
+                </p>
+
+            </div>
+
+            <div class="controls">
+
+                <label for="limitSelect">
+                    Show
+                </label>
+
+                <select id="limitSelect">
+
+                    <option value="6">
+                        6
+                    </option>
+
+                    <option value="9">
+                        9
+                    </option>
+
+                    <option value="12">
+                        12
+                    </option>
+
+                </select>
+
+                <span>
+                    items
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- LOADING -->
+
+        <div
+            id="loading"
+            class="loading"
+        >
+
+            <div class="spinner"></div>
+
+            <p>
+                Finding something delicious...
+            </p>
+
+        </div>
+
+
+        <!-- PRODUCTS -->
+
+        <section
+            id="resultsGrid"
+            class="results-grid"
+        ></section>
+
+
+        <!-- EMPTY -->
+
+        <section
+            id="emptyState"
+            class="empty-state hidden"
+        >
+
+            <div class="empty-icon">
+                🔎
+            </div>
+
+            <h2>
+                No results found
+            </h2>
+
+            <p>
+                Try another search or category.
+            </p>
+
+            <button id="emptyReset">
+                Clear Filters
+            </button>
+
+        </section>
+
+
+        <!-- PAGINATION -->
+
+        <nav
+            id="pagination"
+            class="pagination"
+        ></nav>
+
+    </main>
+
+
+    <!-- =================================
+         CART MODAL
+    ================================== -->
+
+    <div
+        id="cartModal"
+        class="modal hidden"
+    >
+
+        <div class="cart-modal">
+
+            <div class="cart-header">
+
+                <div>
+                    <h2>🛒 Your Basket</h2>
+
+                    <p>
+                        Review your order before checkout
+                    </p>
+                </div>
+
+                <button
+                    id="closeCart"
+                    class="close-btn"
+                >
+                    ✕
+                </button>
+
+            </div>
+
+
+            <div
+                id="cartItems"
+                class="cart-items"
+            ></div>
+
+
+            <div
+                id="cartEmpty"
+                class="cart-empty hidden"
+            >
+
+                <div>
+                    🛒
+                </div>
+
+                <h3>
+                    Your basket is empty
+                </h3>
+
+                <p>
+                    Add something delicious!
+                </p>
+
+            </div>
+
+
+            <div
+                id="cartSummary"
+                class="cart-summary"
+            >
+
+                <div class="summary-row">
+
+                    <span>
+                        Subtotal
+                    </span>
+
+                    <strong id="cartSubtotal">
+                        ₹0
+                    </strong>
+
+                </div>
+
+                <div class="summary-row">
+
+                    <span>
+                        Delivery
+                    </span>
+
+                    <strong>
+                        FREE
+                    </strong>
+
+                </div>
+
+                <div class="summary-total">
+
+                    <span>
+                        Total
+                    </span>
+
+                    <strong id="cartTotal">
+                        ₹0
+                    </strong>
+
+                </div>
+
+                <button
+                    id="checkoutBtn"
+                    class="checkout-btn"
+                >
+                    📦 Proceed to Checkout
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================
+         CHECKOUT MODAL
+    ================================== -->
+
+    <div
+        id="checkoutModal"
+        class="modal hidden"
+    >
+
+        <div class="checkout-modal">
+
+            <div class="checkout-header">
+
+                <div>
+
+                    <h2>
+                        📦 Checkout
+                    </h2>
+
+                    <p>
+                        Enter your delivery details
+                    </p>
+
+                </div>
+
+                <button
+                    id="closeCheckout"
+                    class="close-btn"
+                >
+                    ✕
+                </button>
+
+            </div>
+
+
+            <form id="checkoutForm">
+
+                <div class="form-group">
+
+                    <label for="customerName">
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="customerName"
+                        placeholder="Enter your name"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="customerPhone">
+                        Phone Number
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="customerPhone"
+                        placeholder="Enter your phone number"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="customerAddress">
+                        Delivery Address
+                    </label>
+
+                    <textarea
+                        id="customerAddress"
+                        rows="4"
+                        placeholder="Enter your delivery address"
+                        required
+                    ></textarea>
+
+                </div>
+
+
+                <!-- PAYMENT -->
+
+                <div class="payment-section">
+
+                    <h3>
+                        💳 Payment Method
+                    </h3>
+
+                    <label class="payment-option">
+
+                        <input
+                            type="radio"
+                            name="payment"
+                            value="cod"
+                            checked
+                        >
+
+                        <span class="payment-icon">
+                            💵
+                        </span>
+
+                        <span>
+
+                            <strong>
+                                Cash on Delivery
+                            </strong>
+
+                            <small>
+                                Pay when your order arrives
+                            </small>
+
+                        </span>
+
+                    </label>
+
+                </div>
+
+
+                <!-- CHECKOUT TOTAL -->
+
+                <div class="checkout-total">
+
+                    <span>
+                        Order Total
+                    </span>
+
+                    <strong id="checkoutTotal">
+                        ₹0
+                    </strong>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="place-order-btn"
+                >
+                    🛍️ Place Order • Cash on Delivery
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================
+         SUCCESS MODAL
+    ================================== -->
+
+    <div
+        id="successModal"
+        class="modal hidden"
+    >
+
+        <div class="success-modal">
+
+            <div class="success-icon">
+                🎉
+            </div>
+
+            <h2>
+                Order Placed!
+            </h2>
+
+            <p>
+                Thank you for ordering from BrewBasket.
+            </p>
+
+            <p class="success-payment">
+                💵 Payment Method:
+                <strong>
+                    Cash on Delivery
+                </strong>
+            </p>
+
+            <p>
+                Your delicious order is on its way! ☕🍰
+            </p>
+
+            <button
+                id="continueBtn"
+                class="continue-btn"
+            >
+                Continue Shopping
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <footer>
+
+        <p>
+            Built with ❤️ using HTML, CSS, JavaScript & Express
+        </p>
+
+        <p>
+            ☕ BrewBasket • Freshly brewed happiness
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
